@@ -1,6 +1,6 @@
 # Changelog
 ## v1.0.0
-Initial version of the module, testing in production.
+Initial version of the module, ready for testing in production.
 
 ### Major features of the first release:
 
