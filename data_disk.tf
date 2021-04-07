@@ -1,16 +1,19 @@
-# resource "azurerm_managed_disk" "data_disk" {
-#   for_each = { for d in var.data_disks : d.name => d }
+resource "azurerm_managed_disk" "data_disk" {
+  for_each = { for d in var.data_disks : d.name => d }
 
-#   name                 = each.value.name
-#   location             = data.resource_group.rg.location
-#   resource_group_name  = data.resource_group.rg.name
-#   storage_account_type = each.value.storage_account_type
-#   create_option        = each.value.create_option
-#   disk_size_gb         = each.value.disk_size_gb
+  name                 = each.value.name
+  location             = data.azurerm_resource_group.rg.location
+  resource_group_name  = data.azurerm_resource_group.rg.name
+  storage_account_type = each.value.storage_account_type
+  create_option        = each.value.create_option
+  disk_size_gb         = each.value.disk_size_gb
 
-#   tags = var.tags
-# }
-# resource "azurerm_virtual_machine_data_disk_attachment" "data_disk" {
-#   for_each             = { for d in var.data_disks : d.name => d }
-#   managed_disk_id
-# }
+  tags = var.tags
+}
+resource "azurerm_virtual_machine_data_disk_attachment" "data_disk" {
+  for_each           = { for d in var.data_disks : d.name => d }
+  managed_disk_id    = azurerm_managed_disk.data_disk[tostring(each.value.name)].id
+  virtual_machine_id = var.source_image_reference.offer == "WindowsServer" ? azurerm_windows_virtual_machine.machine[0].id : azurerm_linux_virtual_machine.machine[0].id
+  lun                = each.value.lun
+  caching            = each.value.caching
+}
