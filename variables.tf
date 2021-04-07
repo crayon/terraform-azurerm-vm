@@ -14,12 +14,44 @@ variable "location" {
 }
 variable "tags" {
   description = "Tags used for the resources deployed through this module."
+  type        = map(string)
+  default     = null
 }
 # Machine
 variable "vm_size" {
   description = "The size of virtual machine, defaults to Standard_D2s_v3."
   type        = string
   default     = "Standard_D2s_v3"
+}
+variable "network_interface_ids" {
+  description = "A list of network interface IDs used for the virtual machine."
+  type        = list(string)
+}
+variable "os_disk" {
+  description = "Optional settings related to the OS disk."
+  type = object({
+    caching              = string
+    storage_account_type = string
+  })
+  default = {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+}
+variable "source_image_reference" {
+  description = "The source image reference block, as described in the documentation. Defaults to Ubuntu 18.04"
+  type = object({
+    publisher = string
+    offer     = string
+    sku       = string
+    version   = string
+  })
+  default = {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
 }
 variable "data_disks" {
   description = "Any extra data disks, defined as a list of objects."
@@ -32,4 +64,9 @@ variable "data_disks" {
     disk_size_gb         = number
   }))
   default = []
+}
+# User settings
+variable "admin_user" {
+  description = "Username and password, or ssh key, used for the administrator user."
+  type        = map(string)
 }
