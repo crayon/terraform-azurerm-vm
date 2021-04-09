@@ -70,3 +70,15 @@ variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."
   type        = map(string)
 }
+variable "adds_join" {
+  description = "Settings used to join the computer to Active Directory."
+  type = object({
+    domain_name = string
+    username    = string
+    password    = string
+    ou_path     = string
+    restart     = string
+    options     = number
+  })
+  default = null
+}

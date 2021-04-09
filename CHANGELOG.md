@@ -1,4 +1,9 @@
 # Changelog
+## v1.1.0
+- Added Active Directory domain join
+
+## v1.0.1
+Bug fix, logic related to location was looking for the wrong data type.
 ## v1.0.0
 Initial version of the module, ready for testing in production.
 
