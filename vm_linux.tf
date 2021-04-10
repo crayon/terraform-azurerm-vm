@@ -1,5 +1,5 @@
 resource "azurerm_linux_virtual_machine" "machine" {
-  count                 = local.linux_vm
+  for_each              = var.source_image_reference.offer != "WindowsServer" ? { Linux = "true" } : {}
   name                  = var.name
   resource_group_name   = var.resource_group
   location              = var.location
