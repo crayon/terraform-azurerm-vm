@@ -1,8 +1,8 @@
 resource "azurerm_windows_virtual_machine" "machine" {
   count                 = local.windows_vm
   name                  = var.name
-  resource_group_name   = data.azurerm_resource_group.rg.name
-  location              = var.location != null ? var.location : data.azurerm_resource_group.rg.location
+  resource_group_name   = var.resource_group
+  location              = var.location
   size                  = var.vm_size
   admin_username        = var.admin_user.username
   admin_password        = var.admin_user.password

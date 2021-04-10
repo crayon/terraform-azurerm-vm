@@ -1,6 +1,3 @@
-data "azurerm_resource_group" "rg" {
-  name = var.resource_group
-}
 data "azurerm_subnet" "interfaces" {
   for_each = { for nis in var.network_interface_subnets : nis.name => nis }
 

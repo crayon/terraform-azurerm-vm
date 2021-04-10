@@ -2,8 +2,8 @@ resource "azurerm_managed_disk" "data_disk" {
   for_each = { for d in var.data_disks : d.name => d }
 
   name                 = each.value.name
-  location             = data.azurerm_resource_group.rg.location
-  resource_group_name  = data.azurerm_resource_group.rg.name
+  location             = var.location
+  resource_group_name  = var.resource_group
   storage_account_type = each.value.storage_account_type
   create_option        = each.value.create_option
   disk_size_gb         = each.value.disk_size_gb

@@ -2,8 +2,8 @@ resource "azurerm_network_interface" "machine" {
   for_each = { for nis in var.network_interface_subnets : nis.name => nis }
 
   name                = format("nic%s", each.value.name)
-  location            = data.azurerm_resource_group.rg.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  location            = var.location
+  resource_group_name = var.resource_group
 
   ip_configuration {
     name                          = each.value.name

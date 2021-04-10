@@ -1,7 +1,8 @@
 # Changelog
 
 ## v1.2.0
-- (#4) Add the possibility to create a network interface through the module
+- #4 Add the possibility to create a network interface through the module
+- #11 Remove data.azurerm_resource_group, due to unintentional side-effects
 
 ## v1.1.0
 - Added Active Directory domain join
