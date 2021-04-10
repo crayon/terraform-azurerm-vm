@@ -6,7 +6,8 @@ resource "azurerm_windows_virtual_machine" "machine" {
   size                  = var.vm_size
   admin_username        = var.admin_user.username
   admin_password        = var.admin_user.password
-  network_interface_ids = var.network_interface_ids
+  network_interface_ids = local.network_interface_ids
+
   os_disk {
     caching              = var.os_disk.caching
     storage_account_type = var.os_disk.storage_account_type
