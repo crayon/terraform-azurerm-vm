@@ -26,6 +26,16 @@ variable "vm_size" {
 variable "network_interface_ids" {
   description = "A list of network interface IDs used for the virtual machine."
   type        = list(string)
+  default     = null
+}
+variable "network_interface_subnets" {
+  description = "A list of subnets, for which the module will create and connect network interfaces for."
+  type = list(object({
+    name                 = string
+    virtual_network_name = string
+    resource_group_name  = string
+  }))
+  default = []
 }
 variable "os_disk" {
   description = "Optional settings related to the OS disk."

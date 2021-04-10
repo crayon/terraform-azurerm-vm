@@ -1,11 +1,11 @@
 resource "azurerm_linux_virtual_machine" "machine" {
-  count                 = local.linux_vm
+  for_each              = var.source_image_reference.offer != "WindowsServer" ? { Linux = "true" } : {}
   name                  = var.name
-  resource_group_name   = data.azurerm_resource_group.rg.name
-  location              = var.location != null ? var.location : data.azurerm_resource_group.rg.location
+  resource_group_name   = var.resource_group
+  location              = var.location
   size                  = var.vm_size
   admin_username        = var.admin_user.username
-  network_interface_ids = var.network_interface_ids
+  network_interface_ids = local.network_interface_ids
 
   # If public_key is defined in var.admin_user, we add the ssh key.
   # Otherwise, we set admin_password.
