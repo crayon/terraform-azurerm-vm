@@ -5,7 +5,7 @@ resource "azurerm_virtual_machine_extension" "adjoin" {
   virtual_machine_id   = var.source_image_reference.offer == "WindowsServer" ? azurerm_windows_virtual_machine.machine[0].id : azurerm_linux_virtual_machine.machine[0].id
   publisher            = "Microsoft.Compute"
   type                 = "JsonADDomainExtension"
-  type_handler_version = "1.3.6"
+  type_handler_version = "1.3"
 
   settings           = <<SETTINGS
     {
