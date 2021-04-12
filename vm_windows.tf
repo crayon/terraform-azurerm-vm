@@ -29,8 +29,9 @@ resource "azurerm_windows_virtual_machine" "machine" {
     }
   }
 
-  zone     = var.availability_zone
-  timezone = var.timezone
+  zone                = var.availability_zone
+  availability_set_id = var.availability_set_id
+  timezone            = var.timezone
 
   source_image_reference {
     publisher = var.source_image_reference.publisher

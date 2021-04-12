@@ -24,7 +24,8 @@ resource "azurerm_linux_virtual_machine" "machine" {
     storage_account_type = var.os_disk.storage_account_type
   }
 
-  zone = var.availability_zone
+  zone                = var.availability_zone
+  availability_set_id = var.availability_set_id
 
   # Boot diagnostic settings:
   # If managed boot diagnostics is set, define a null value on storage_account_uri

@@ -80,6 +80,11 @@ variable "availability_zone" {
   type        = number
   default     = null
 }
+variable "availability_set_id" {
+  description = "Specifies the ID of the Availability Set in which the Virtual Machine should exist."
+  type        = string
+  default     = null
+}
 variable "managed_boot_diagnostic" {
   description = "Enable managed boot diagnostics."
   type        = bool
@@ -95,6 +100,15 @@ variable "timezone" {
   type        = string
   default     = null
 }
+# variable "backup" {
+#   description = "Settings for creating the backup resource."
+#   type = object({
+#     resource_group_name = string
+#     recovery_vault_name = string
+#     backup_policy_id    = string
+#   })
+#   default = null
+# }
 # User settings
 variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."
