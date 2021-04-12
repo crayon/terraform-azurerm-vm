@@ -75,6 +75,11 @@ variable "data_disks" {
   }))
   default = []
 }
+variable "availability_zone" {
+  description = "The availability zone the resources should be deployed to."
+  type        = number
+  default     = null
+}
 # User settings
 variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."

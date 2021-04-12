@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.3.0
+- #15 Availability zone
+
 ## v1.2.0
 - #4 Add the possibility to create a network interface through the module
 - #10 Fix how the module decides what resource to use

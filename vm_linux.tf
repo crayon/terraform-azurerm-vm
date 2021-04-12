@@ -24,6 +24,8 @@ resource "azurerm_linux_virtual_machine" "machine" {
     storage_account_type = var.os_disk.storage_account_type
   }
 
+  zone = var.availability_zone
+
   source_image_reference {
     publisher = var.source_image_reference.publisher
     offer     = var.source_image_reference.offer
