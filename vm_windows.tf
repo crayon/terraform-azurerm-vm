@@ -4,6 +4,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   resource_group_name   = var.resource_group
   location              = var.location
   size                  = var.vm_size
+  license_type          = var.license_type
   admin_username        = var.admin_user.username
   admin_password        = var.admin_user.password
   network_interface_ids = local.network_interface_ids
