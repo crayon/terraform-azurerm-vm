@@ -23,6 +23,11 @@ variable "vm_size" {
   type        = string
   default     = "Standard_D2s_v3"
 }
+variable "license_type" {
+  description = "Specifies the type of Azure Hybrid Use Benefit which should be used for this Virtual Machine. Possible values are None, Windows_Client and Windows_Server."
+  type        = string
+  default     = null
+}
 variable "network_interface_ids" {
   description = "A list of network interface IDs used for the virtual machine."
   type        = list(string)
