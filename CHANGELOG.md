@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.3.1
+- Fix bug with AD join
+- #19 Add hostname to network interface
 ## v1.3.0
 - #13 Added support for both managed boot diagnostics, and bring your own storage account
 - #15 Availability zone
