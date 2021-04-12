@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.4.0
+- #14 Added backup
+
 ## v1.3.1
 - Fix bug with AD join
 - #19 Add hostname to network interface
