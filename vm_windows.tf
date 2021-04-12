@@ -13,6 +13,26 @@ resource "azurerm_windows_virtual_machine" "machine" {
     storage_account_type = var.os_disk.storage_account_type
   }
 
+  # Boot diagnostic settings:
+  # If managed boot diagnostics is set, define a null value on storage_account_uri
+  # and if not, set the URI for the storage account.
+  dynamic "boot_diagnostics" {
+    for_each = var.managed_boot_diagnostic ? ["true"] : []
+    content {
+      storage_account_uri = null
+    }
+  }
+  dynamic "boot_diagnostics" {
+    for_each = var.boot_diagnostic_storage_account != null ? ["true"] : []
+    content {
+      storage_account_uri = var.boot_diagnostic_storage_account
+    }
+  }
+
+  zone                = var.availability_zone
+  availability_set_id = var.availability_set_id
+  timezone            = var.timezone
+
   source_image_reference {
     publisher = var.source_image_reference.publisher
     offer     = var.source_image_reference.offer

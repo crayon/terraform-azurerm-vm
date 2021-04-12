@@ -75,6 +75,40 @@ variable "data_disks" {
   }))
   default = []
 }
+variable "availability_zone" {
+  description = "The availability zone the resources should be deployed to."
+  type        = number
+  default     = null
+}
+variable "availability_set_id" {
+  description = "Specifies the ID of the Availability Set in which the Virtual Machine should exist."
+  type        = string
+  default     = null
+}
+variable "managed_boot_diagnostic" {
+  description = "Enable managed boot diagnostics."
+  type        = bool
+  default     = true
+}
+variable "boot_diagnostic_storage_account" {
+  description = "URI for the Storage Account which should be used to store Boot Diagnostics."
+  type        = string
+  default     = null
+}
+variable "timezone" {
+  description = "Set a specific timezone, used for Windows machines only."
+  type        = string
+  default     = null
+}
+# variable "backup" {
+#   description = "Settings for creating the backup resource."
+#   type = object({
+#     resource_group_name = string
+#     recovery_vault_name = string
+#     backup_policy_id    = string
+#   })
+#   default = null
+# }
 # User settings
 variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."

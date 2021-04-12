@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.0
+- #13 Added support for both managed boot diagnostics, and bring your own storage account
+- #15 Availability zone
+- #17 Support for setting timezones on Windows servers
+- #18 Availability sets
+
 ## v1.2.0
 - #4 Add the possibility to create a network interface through the module
 - #10 Fix how the module decides what resource to use
