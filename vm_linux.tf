@@ -26,6 +26,22 @@ resource "azurerm_linux_virtual_machine" "machine" {
 
   zone = var.availability_zone
 
+  # Boot diagnostic settings:
+  # If managed boot diagnostics is set, define a null value on storage_account_uri
+  # and if not, set the URI for the storage account.
+  dynamic "boot_diagnostics" {
+    for_each = var.managed_boot_diagnostic ? ["true"] : []
+    content {
+      storage_account_uri = null
+    }
+  }
+  dynamic "boot_diagnostics" {
+    for_each = var.boot_diagnostic_storage_account != null ? ["true"] : []
+    content {
+      storage_account_uri = var.boot_diagnostic_storage_account
+    }
+  }
+
   source_image_reference {
     publisher = var.source_image_reference.publisher
     offer     = var.source_image_reference.offer

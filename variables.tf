@@ -80,6 +80,16 @@ variable "availability_zone" {
   type        = number
   default     = null
 }
+variable "managed_boot_diagnostic" {
+  description = "Enable managed boot diagnostics."
+  type        = bool
+  default     = true
+}
+variable "boot_diagnostic_storage_account" {
+  description = "URI for the Storage Account which should be used to store Boot Diagnostics."
+  type        = string
+  default     = null
+}
 # User settings
 variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."
