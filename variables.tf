@@ -90,6 +90,11 @@ variable "boot_diagnostic_storage_account" {
   type        = string
   default     = null
 }
+variable "timezone" {
+  description = "Set a specific timezone, used for Windows machines only."
+  type        = string
+  default     = null
+}
 # User settings
 variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."
