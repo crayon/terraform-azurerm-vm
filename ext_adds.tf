@@ -2,7 +2,7 @@ resource "azurerm_virtual_machine_extension" "adjoin" {
   for_each = var.adds_join != null ? { "ADDS" = "true" } : {}
   # for_each             = { for ext in var.adds_join : ext.domain_name => ext }
   name                 = format("%s-adjoin", var.name)
-  virtual_machine_id   = var.source_image_reference.offer == "WindowsServer" ? azurerm_windows_virtual_machine.machine[*].id : azurerm_linux_virtual_machine.machine[*].id
+  virtual_machine_id   = var.source_image_reference.offer == "WindowsServer" ? azurerm_windows_virtual_machine.machine[0].id : azurerm_linux_virtual_machine.machine[0].id
   publisher            = "Microsoft.Compute"
   type                 = "JsonADDomainExtension"
   type_handler_version = "1.3.6"
