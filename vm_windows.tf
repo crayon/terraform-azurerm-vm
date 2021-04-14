@@ -10,8 +10,12 @@ resource "azurerm_windows_virtual_machine" "machine" {
   network_interface_ids = local.network_interface_ids
 
   os_disk {
-    caching              = var.os_disk.caching
-    storage_account_type = var.os_disk.storage_account_type
+    caching                   = var.os_disk.caching
+    storage_account_type      = var.os_disk.storage_account_type
+    disk_size_gb              = lookup(var.os_disk.optional_settings, "disk_size_gb", null)
+    disk_encryption_set_id    = lookup(var.os_disk.optional_settings, "disk_encryption_set_id", null)
+    name                      = lookup(var.os_disk.optional_settings, "name", null)
+    write_accelerator_enabled = lookup(var.os_disk.optional_settings, "write_accelerator_enabled", false)
   }
 
   # Boot diagnostic settings:

@@ -47,10 +47,12 @@ variable "os_disk" {
   type = object({
     caching              = string
     storage_account_type = string
+    optional_settings    = map(string)
   })
   default = {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
+    optional_settings    = {}
   }
 }
 variable "source_image_reference" {
