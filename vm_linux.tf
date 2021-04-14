@@ -20,12 +20,13 @@ resource "azurerm_linux_virtual_machine" "machine" {
   admin_password                  = local.linux_admin_ssh != true ? lookup(var.admin_user, "password", null) : null
 
   os_disk {
-    caching              = var.os_disk.caching
-    storage_account_type = var.os_disk.storage_account_type
+    caching                   = var.os_disk.caching
+    storage_account_type      = var.os_disk.storage_account_type
+    disk_size_gb              = lookup(var.os_disk.optional_settings, "disk_size_gb", null)
+    disk_encryption_set_id    = lookup(var.os_disk.optional_settings, "disk_encryption_set_id", null)
+    name                      = lookup(var.os_disk.optional_settings, "name", null)
+    write_accelerator_enabled = lookup(var.os_disk.optional_settings, "write_accelerator_enabled", false)
   }
-
-  zone                = var.availability_zone
-  availability_set_id = var.availability_set_id
 
   # Boot diagnostic settings:
   # If managed boot diagnostics is set, define a null value on storage_account_uri
@@ -42,6 +43,18 @@ resource "azurerm_linux_virtual_machine" "machine" {
       storage_account_uri = var.boot_diagnostic_storage_account
     }
   }
+
+  dynamic "plan" {
+    for_each = var.plan != null ? ["plan"] : []
+    content {
+      name      = var.plan.name
+      product   = var.plan.product
+      publisher = var.plan.publisher
+    }
+  }
+
+  zone                = var.availability_zone
+  availability_set_id = var.availability_set_id
 
   source_image_reference {
     publisher = var.source_image_reference.publisher

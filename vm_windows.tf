@@ -34,6 +34,15 @@ resource "azurerm_windows_virtual_machine" "machine" {
     }
   }
 
+  dynamic "plan" {
+    for_each = var.plan != null ? ["plan"] : []
+    content {
+      name      = var.plan.name
+      product   = var.plan.product
+      publisher = var.plan.publisher
+    }
+  }
+
   zone                = var.availability_zone
   availability_set_id = var.availability_set_id
   timezone            = var.timezone

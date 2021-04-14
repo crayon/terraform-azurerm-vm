@@ -1,4 +1,4 @@
-# Generic settings
+##### Generic settings
 variable "name" {
   description = "The name of the virtual machine."
   type        = string
@@ -17,7 +17,7 @@ variable "tags" {
   type        = map(string)
   default     = null
 }
-# Machine
+##### Machine
 variable "vm_size" {
   description = "The size of virtual machine, defaults to Standard_D2s_v3."
   type        = string
@@ -116,7 +116,16 @@ variable "backup" {
   })
   default = null
 }
-# User settings
+variable "plan" {
+  description = "Used to specify a certain product plan from the Azure marketplace."
+  type = object({
+    name      = string
+    product   = string
+    publisher = string
+  })
+  default = null
+}
+##### User settings
 variable "admin_user" {
   description = "Username and password, or ssh key, used for the administrator user."
   type        = map(string)
