@@ -1,7 +1,12 @@
 # Changelog
 
+## v1.5.0
+- Add optional settings to os_disk (#27)
+- Add the 'plan' block (#26)
+
 ## v1.4.0
 - #14 Added backup
+- #16 Added license_type
 
 ## v1.3.1
 - Fix bug with AD join
