@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.6.0
+Total rewrite of how we select which virtual machine resource is used, to be compatible with both `source_image_id` and `source_image_reference`.
+
+- Add source_image_id (#8)
+
 ## v1.5.0
 - Add optional settings to os_disk (#27)
 - Add the 'plan' block (#26)
