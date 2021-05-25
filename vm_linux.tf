@@ -1,5 +1,5 @@
 resource "azurerm_linux_virtual_machine" "machine" {
-  count                 = var.source_image_reference.offer != "WindowsServer" ? 1 : 0
+  count                 = local.os_type == "linux" ? 1 : 0
   name                  = var.name
   resource_group_name   = var.resource_group
   location              = var.location
@@ -56,10 +56,16 @@ resource "azurerm_linux_virtual_machine" "machine" {
   zone                = var.availability_zone
   availability_set_id = var.availability_set_id
 
-  source_image_reference {
-    publisher = var.source_image_reference.publisher
-    offer     = var.source_image_reference.offer
-    sku       = var.source_image_reference.sku
-    version   = var.source_image_reference.version
+  # If source_image_id is set, use that. If not, use the source_image_reference values defaults.
+  source_image_id = var.source_image_id.os == "linux" ? var.source_image_id.uri : null
+
+  dynamic "source_image_reference" {
+    for_each = var.source_image_id == null ? ["source_image_reference"] : []
+    content {
+      publisher = var.source_image_reference.publisher
+      offer     = var.source_image_reference.offer
+      sku       = var.source_image_reference.sku
+      version   = var.source_image_reference.version
+    }
   }
 }

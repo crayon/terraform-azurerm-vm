@@ -55,6 +55,17 @@ variable "os_disk" {
     optional_settings    = {}
   }
 }
+variable "source_image_id" {
+  description = "The ID of a source image. If used, it will always be chosen over source_image_reference."
+  type        = object({
+    os  = string
+    uri = string
+  })
+  default     = {
+    os  = "not_set"
+    uri = "n/a"
+  }
+}
 variable "source_image_reference" {
   description = "The source image reference block, as described in the documentation. Defaults to Ubuntu 18.04"
   type = object({
