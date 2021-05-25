@@ -1,5 +1,5 @@
-resource "azurerm_windows_virtual_machine" "machine" {
-  count                 = var.source_image_reference.offer == "WindowsServer" ? 1 : 0
+resource "azurerm_windows_virtual_machine" "machine_vhd" {
+  count                 = var.source_image_id.os == "windows" ? 1 : 0
   name                  = var.name
   resource_group_name   = var.resource_group
   location              = var.location
@@ -48,11 +48,6 @@ resource "azurerm_windows_virtual_machine" "machine" {
   timezone            = var.timezone
 
 
-  source_image_reference {
-    publisher = var.source_image_reference.publisher
-    offer     = var.source_image_reference.offer
-    sku       = var.source_image_reference.sku
-    version   = var.source_image_reference.version
-  }
+  source_image_id = var.source_image_id.uri
 }
 
