@@ -62,8 +62,8 @@ variable "source_image_id" {
     uri = string
   })
   default     = {
-    os  = "not_set"
-    uri = "n/a"
+    os  = null
+    uri = null
   }
 }
 variable "source_image_reference" {
