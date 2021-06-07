@@ -34,11 +34,12 @@ variable "network_interface_ids" {
   default     = null
 }
 variable "network_interface_subnets" {
-  description = "A list of subnets, for which the module will create and connect network interfaces for."
+  description = "A list of subnets, for which the module will create and connect network interfaces for. Optionally, you can add public IP or define it as null."
   type = list(object({
     name                 = string
     virtual_network_name = string
     resource_group_name  = string
+    public_ip_id         = string
   }))
   default = []
 }
