@@ -60,12 +60,12 @@ resource "azurerm_windows_virtual_machine" "machine" {
       version   = var.source_image_reference.version
     }
   }
-  
-dynamic "identity" {
-  for_each = var.azure_ad_join != null ? ["identity"] : []
-  content {
-      type = "SystemAssigned"
+
+  dynamic "identity" {
+    for_each = var.azure_ad_join != false ? ["identity"] : []
+    content {
+        type = "SystemAssigned"
+    }
   }
-}
 
 }
