@@ -157,5 +157,5 @@ variable "adds_join" {
 
 variable "azure_ad_join" {
 description = "Whether to join the virtual machine to Azure Active Directory"
-default = null
+default = false
 }
