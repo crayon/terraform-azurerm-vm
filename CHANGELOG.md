@@ -1,8 +1,12 @@
 # Changelog
 
+## v1.9.0
+
+- Added support for Azure AD authentication for Linux and Windows (#14), thanks @janegilring
+
 ## v1.8.0
 
-- Added tags (#13), Thanks @janegilring
+- Added tags (#13), thanks @janegilring
 
 ## v1.6.0
 Total rewrite of how we select which virtual machine resource is used, to be compatible with both `source_image_id` and `source_image_reference`.
