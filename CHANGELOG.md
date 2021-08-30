@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.8.0
+
+- Added tags (#13), Thanks @janegilring
+
 ## v1.6.0
 Total rewrite of how we select which virtual machine resource is used, to be compatible with both `source_image_id` and `source_image_reference`.
 
