@@ -3,6 +3,7 @@ resource "azurerm_linux_virtual_machine" "machine" {
   name                  = var.name
   resource_group_name   = var.resource_group
   location              = var.location
+  tags                  = var.tags
   size                  = var.vm_size
   admin_username        = var.admin_user.username
   network_interface_ids = local.network_interface_ids

@@ -3,6 +3,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   name                  = var.name
   resource_group_name   = var.resource_group
   location              = var.location
+  tags                  = var.tags
   size                  = var.vm_size
   license_type          = var.license_type
   admin_username        = var.admin_user.username
