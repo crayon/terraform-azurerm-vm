@@ -64,7 +64,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   dynamic "identity" {
     for_each = var.azure_ad_join != false ? ["identity"] : []
     content {
-        type = "SystemAssigned"
+      type = "SystemAssigned"
     }
   }
 

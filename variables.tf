@@ -58,11 +58,11 @@ variable "os_disk" {
 }
 variable "source_image_id" {
   description = "The ID of a source image. If used, it will always be chosen over source_image_reference."
-  type        = object({
+  type = object({
     os  = string
     uri = string
   })
-  default     = {
+  default = {
     os  = null
     uri = null
   }
@@ -156,6 +156,7 @@ variable "adds_join" {
 }
 
 variable "azure_ad_join" {
-description = "Whether to join the virtual machine to Azure Active Directory"
-default = false
+  description = "Whether to join the virtual machine to Azure Active Directory."
+  type        = bool
+  default     = false
 }
