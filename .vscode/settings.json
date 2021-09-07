@@ -1,5 +1,6 @@
 {
   "[terraform]": {
     "editor.formatOnSave": true
-  }
+  },
+  "files.eol": "\n"
 }
