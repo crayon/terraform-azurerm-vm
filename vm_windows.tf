@@ -9,6 +9,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   admin_username        = var.admin_user.username
   admin_password        = var.admin_user.password
   network_interface_ids = local.network_interface_ids
+  patch_mode            = var.patch_mode
 
   os_disk {
     caching                   = var.os_disk.caching
