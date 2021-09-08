@@ -7,10 +7,12 @@ resource "azurerm_network_interface" "machine" {
   tags                = var.tags
 
   ip_configuration {
-    name                          = each.value.name
-    subnet_id                     = data.azurerm_subnet.interfaces[each.value.name].id
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = each.value.public_ip_id
+    name                 = each.value.name
+    subnet_id            = data.azurerm_subnet.interfaces[each.value.name].id
+    public_ip_address_id = each.value.public_ip_id
+
+    private_ip_address_allocation = each.value.static_ip != null ? "Static" : "Dynamic"
+    private_ip_address            = each.value.static_ip != "enabled" ? each.value.static_ip : null
   }
 
   depends_on = [data.azurerm_subnet.interfaces]

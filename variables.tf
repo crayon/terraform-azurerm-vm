@@ -40,6 +40,7 @@ variable "network_interface_subnets" {
     virtual_network_name = string
     resource_group_name  = string
     public_ip_id         = string
+    static_ip            = string
   }))
   default = []
 }
