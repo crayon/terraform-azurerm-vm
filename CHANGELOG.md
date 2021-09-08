@@ -3,6 +3,7 @@
 ## v1.10.0
 
 - Add patch_mode (#2)
+- Documentation, initial release (#6)
 - Add support for Static IP assignment for NICs (#15)
 - Upgrade azurerm to 2.75.0 (#17)
 - Upgrade required version of Terraform to 1.0.6 (#18)
