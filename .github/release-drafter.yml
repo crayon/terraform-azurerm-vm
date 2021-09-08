@@ -11,7 +11,7 @@ categories:
     labels:
       - 'Type: chore'
       - 'Type: Documentation'
-change-template: '- $TITLE [ @$AUTHOR (#$NUMBER) ]'
+change-template: '- (#$NUMBER) _$TITLE_ by @$AUTHOR'
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
   major:
