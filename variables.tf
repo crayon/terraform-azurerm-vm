@@ -120,6 +120,11 @@ variable "timezone" {
   type        = string
   default     = null
 }
+variable "patch_mode" {
+  description = "Specifies the mode of in-guest patching to this Windows Virtual Machine. Possible values are Manual, AutomaticByOS and AutomaticByPlatform. Defaults to AutomaticByOS."
+  type        = string
+  default     = null
+}
 variable "backup" {
   description = "Settings for creating the backup resource."
   type = object({
