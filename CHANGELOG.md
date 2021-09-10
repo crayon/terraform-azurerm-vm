@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.10.1
+
+Bug fix:
+
+- Module provisions Windows client images as azurerm_linux_virtual_machine (#23), thanks @janegilring
+
 ## v1.10.0
 
 - Add patch_mode (#2)
