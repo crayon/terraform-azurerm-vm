@@ -4,6 +4,7 @@ categories:
   - title: 'Features'
     labels:
       - 'Type: Feature'
+      - 'Type: Enhancement'
   - title: 'Bug Fixes'
     labels:
       - 'Type: Bug'
@@ -23,8 +24,11 @@ version-resolver:
   patch:
     labels:
       - 'patch'
-  default: minor
+  default: patch
 template: |
   ## Changes
 
   $CHANGES
+  
+  _Thanks to all that contributed:_
+  $CONTRIBUTORS
