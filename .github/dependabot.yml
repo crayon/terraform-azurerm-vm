@@ -4,3 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+      default_labels:
+      - "Type: Chore"
+      - "dependabot"
