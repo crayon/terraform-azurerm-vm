@@ -5,5 +5,5 @@ updates:
     schedule:
       interval: "daily"
       default_labels:
-      - "Type: Chore"
-      - "dependabot"
+        - "Type: Chore"
+        - "dependabot"
