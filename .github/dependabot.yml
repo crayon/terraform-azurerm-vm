@@ -2,7 +2,7 @@ version: 2
 updates:
   - package-ecosystem: "terraform"
     directory: "/"
-    default_labels:
+    labels:
       - "Type: Chore"
       - "dependabot"
     schedule:
