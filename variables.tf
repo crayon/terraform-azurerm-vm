@@ -92,6 +92,7 @@ variable "data_disks" {
     caching              = string
     lun                  = number
     disk_size_gb         = number
+    additional_settings  = map(string)
   }))
   default = []
 }
