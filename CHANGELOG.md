@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.11.0
+
+- (#34) *v1.11 changes* by @roberthstrand
+- (#27) *Bump hashicorp/azurerm from 2.76.0 to 2.78.0* by @dependabot
+- (#25) *Bump hashicorp/azurerm from 2.75.0 to 2.76.0* by @dependabot
+
 ## v1.10.1
 
 Bug fix:
