@@ -5,6 +5,6 @@ locals {
 
   vm_id              = local.os_type != "windows" ? azurerm_linux_virtual_machine.machine[0].id : azurerm_windows_virtual_machine.machine[0].id
   image_id_os        = var.source_image_id.os == "windows" ? "windows" : "linux"
-  image_reference_os = can(regex("(Windows)", var.source_image_reference.offer)) ? "windows" : "linux"
+  image_reference_os = can(regex("(windows)", lower(var.source_image_reference.publisher))) ? "windows" : "linux"
   os_type            = var.source_image_id.os == null ? local.image_reference_os : local.image_id_os
 }

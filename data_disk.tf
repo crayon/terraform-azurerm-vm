@@ -5,8 +5,14 @@ resource "azurerm_managed_disk" "data_disk" {
   location             = var.location
   resource_group_name  = var.resource_group
   storage_account_type = each.value.storage_account_type
-  create_option        = each.value.create_option
+  create_option        = title(each.value.create_option)
   disk_size_gb         = each.value.disk_size_gb
+
+  # If create_option is anything other than Empty,
+  # we need to define the supporting attribute.
+  source_resource_id = contains(["copy", "restore"], lower(each.value.create_option)) ? each.value.additional_settings.source_resource_id : null
+  source_uri         = lower(each.value.create_option) == "import" ? each.value.additional_settings.source_uri : null
+  image_reference_id = lower(each.value.create_option) == "fromimage" ? each.value.additional_settings.image_reference_id : null
 
   tags = var.tags
 }
