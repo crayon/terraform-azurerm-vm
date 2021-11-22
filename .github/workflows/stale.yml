@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/stale@v4
         with:
+          repo-token: ${{ secrets.GHBOT_TOKEN }}
           stale-issue-message: 'This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.'
           close-issue-message: 'Closed due to inactivity for 7 days since marked as stale. Please ping one of the maintainers once you add more information and updates here.'
           stale-pr-message: 'This pull request has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.'
