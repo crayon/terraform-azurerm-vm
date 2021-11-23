@@ -5,4 +5,4 @@ updates:
     labels:
       - "Type: Chore"
     schedule:
-      interval: "daily"
+      interval: "weekly"
