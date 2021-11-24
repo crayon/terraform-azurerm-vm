@@ -1,9 +1,6 @@
 name: Automation
 
 on:
-  push:
-    branches:
-    - main
   issues:
     types: [opened]
   pull_request:
