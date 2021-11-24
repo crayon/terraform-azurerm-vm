@@ -4,11 +4,13 @@ on:
   push:
     paths-ignore:
     - '**.md'
+    - '**.y*ml'
   pull_request:
     branches:
     - main
     paths-ignore:
     - '**.md'
+    - '**.y*ml'
 
 jobs:
   tflint:
