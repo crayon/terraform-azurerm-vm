@@ -38,14 +38,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GHBOT_TOKEN }}
           PR_ID: ${{ github.event.pull_request.node_id }}
         run: |
-          item_id="$( gh api graphql -f query='
+          gh api graphql -f query='
             mutation($project:ID!, $pr:ID!) {
               addProjectNextItem(input: {projectId: $project, contentId: $pr}) {
                 projectNextItem {
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f pr=$PR_ID --jq '.data.addProjectNextItem.projectNextItem.id')"
+            }' -f project=$PROJECT_ID -f pr=$PR_ID --jq '.data.addProjectNextItem.projectNextItem.id')
 
       - name: Add issue to project
         if: ${{ github.event_name == 'issues' }}
@@ -53,11 +53,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GHBOT_TOKEN }}
           ISSUE_ID: ${{ github.event.issue.node_id }}
         run: |
-          item_id="$( gh api graphql -f query='
+          gh api graphql -f query='
             mutation($project:ID!, $pr:ID!) {
               addProjectNextItem(input: {projectId: $project, contentId: $pr}) {
                 projectNextItem {
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f pr=$ISSUE_ID --jq '.data.addProjectNextItem.projectNextItem.id')"
+            }' -f project=$PROJECT_ID -f pr=$ISSUE_ID --jq '.data.addProjectNextItem.projectNextItem.id')
