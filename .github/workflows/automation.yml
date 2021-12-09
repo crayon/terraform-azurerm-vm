@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Automation
     steps:
+    - name: Project automation
+      uses: actions/composite-projectautomation@v1.0.0-beta1
+      with:
+        project_number: 7
+        id: ${{ github.event.pull_request.node_id || github.event.issue.node_id }}
     - name: Mark stale issues and pull requests
       uses: actions/stale@v3
       if: github.event_name == 'schedule'
