@@ -1,5 +1,4 @@
 name: Automation
-
 on:
   issues:
     types: [opened]
@@ -7,20 +6,21 @@ on:
     types: [opened, reopened, synchronize]
   schedule:
   - cron: '0 0 * * *'
-env:
-  MY_GITHUB_TOKEN: ${{ secrets.GHBOT_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GHBOT_TOKEN }}
 
 jobs:
   automation:
     runs-on: ubuntu-latest
     name: Automation
     steps:
+    
     - name: Project automation
-      uses: crayon/composite-projectautomation@v1.0.0-beta1
+      if: github.event_name == 'issues'
+      uses: crayon/project-github-action@v1.0.0-beta1
       with:
-        project_number: 7
-        id: ${{ github.event.pull_request.node_id || github.event.issue.node_id }}
+        project_number: 6
+        task_id: ${{ github.event.pull_request.node_id || github.event.issue.node_id }}
+        repo-token: ${{ secrets.GHBOT_TOKEN }}
+        
     - name: Mark stale issues and pull requests
       uses: actions/stale@v3
       if: github.event_name == 'schedule'
