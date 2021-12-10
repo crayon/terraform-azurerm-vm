@@ -4,10 +4,13 @@ A module used for deploying virtual machines in Azure.
 ## Requirements
 | | |
 |----------|----------|
-|Terraform | >= v.0.14.9 |
-| azurerm  | >= 2.54.0 |
+|Terraform | >= 1.0.6 |
+| azurerm  | = 2.88.1 |
 
 ## Example deployment
+
+>Check out the [examples](examples/) folder for more.
+
 ```hcl
 module "virtual_machine" {
   source  = "crayon/vm/azurerm"
