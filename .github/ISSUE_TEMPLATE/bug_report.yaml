@@ -17,17 +17,10 @@ body:
     validations:
       required: true
   - type: textarea
-    id: moduleversion
+    id: versions
     attributes:
-      label: Module version
-      description: What version of the module are you having problems with?
-    validations:
-      required: true
-  - type: textarea
-    id: tfversion
-    attributes:
-      label: Terraform version
-      description: What version of Terraform did you run this with?
+      label: Versions
+      description: What version of the module are you having problems with, and which version of Terraform did you use?
     validations:
       required: true
   - type: textarea
