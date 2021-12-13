@@ -12,7 +12,7 @@ body:
     attributes:
       label: Describe the feature
       description: Please describe the feature in as much detail as possible, preferably with a use-case example to make it clear why this feature is needed.
-      placeholder: Feature description:
+      placeholder: Feature description
       value: "I want to add ... to the module to help in ... scenario"
     validations:
       required: true
