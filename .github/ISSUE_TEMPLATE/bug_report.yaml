@@ -21,7 +21,7 @@ body:
     attributes:
       label: Module version
       description: What version of the module are you having problems with?
-    validation:
+    validations:
       required: true
   - type: textarea
     id: tfversion
