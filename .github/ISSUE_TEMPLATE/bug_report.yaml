@@ -1,20 +1,12 @@
 name: Bug Report
 description: File a bug report
 title: "[Bug]: "
-labels: ["Type: Bug", "Status: Backlog"]
+labels: ["Type: Bug", "Status: Triage"]
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
   - type: textarea
     id: what-happened
     attributes:
@@ -25,10 +17,10 @@ body:
     validations:
       required: true
   - type: textarea
-    id: version
+    id: versions
     attributes:
-      label: Version
-      description: What version of our module are you using, and with what providers?
+      label: Versions
+      description: What version of the module are you having problems with, and which version of Terraform did you use?
     validations:
       required: true
   - type: textarea
