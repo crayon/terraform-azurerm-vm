@@ -1,6 +1,5 @@
 resource "azurerm_virtual_machine_extension" "adjoin" {
   for_each = var.adds_join != null ? { "ADDS" = "true" } : {}
-  # for_each             = { for ext in var.adds_join : ext.domain_name => ext }
   name                 = format("%s-adjoin", var.name)
   virtual_machine_id   = local.os_type == "windows" ? azurerm_windows_virtual_machine.machine[0].id : azurerm_linux_virtual_machine.machine[0].id
   publisher            = "Microsoft.Compute"
