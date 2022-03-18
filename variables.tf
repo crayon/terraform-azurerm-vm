@@ -167,3 +167,9 @@ variable "azure_ad_join" {
   type        = bool
   default     = false
 }
+
+variable "azure_monitor_agent" {
+  description = "Whether to install the Azure Monitor Agent VM extension."
+  type        = bool
+  default     = false
+}
