@@ -70,9 +70,10 @@ resource "azurerm_linux_virtual_machine" "machine" {
   }
 
   dynamic "identity" {
-    for_each = var.azure_ad_join != false ? ["identity"] : []
+    for_each = var.identity != null ? ["identity"] : []
     content {
-      type = "SystemAssigned"
+      type         = var.identity.type
+      identity_ids = var.identity.identity_ids
     }
   }
 

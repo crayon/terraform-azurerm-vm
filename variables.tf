@@ -167,3 +167,12 @@ variable "azure_ad_join" {
   type        = bool
   default     = false
 }
+
+variable "identity" {
+  description = "Managed Identity which should be assigned the virtual machine."
+  type = object({
+    type         = string
+    identity_ids = list(string)
+  })
+  default = null
+}
