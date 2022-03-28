@@ -36,6 +36,13 @@ resource "azurerm_windows_virtual_machine" "machine" {
     }
   }
 
+  dynamic "custom_data" {
+    for_each = var.custom_data != null ? ["true"] : []
+    content {
+      custom_data = var.custom_data
+    }
+  }
+
   dynamic "plan" {
     for_each = var.plan != null ? ["plan"] : []
     content {
@@ -48,7 +55,6 @@ resource "azurerm_windows_virtual_machine" "machine" {
   zone                = var.availability_zone
   availability_set_id = var.availability_set_id
   timezone            = var.timezone
-
 
   source_image_id = var.source_image_id.uri
 
@@ -63,9 +69,10 @@ resource "azurerm_windows_virtual_machine" "machine" {
   }
 
   dynamic "identity" {
-    for_each = var.azure_ad_join != false ? ["identity"] : []
+    for_each = var.identity != null ? ["identity"] : []
     content {
-      type = "SystemAssigned"
+      type         = var.identity.type
+      identity_ids = var.identity.identity_ids
     }
   }
 

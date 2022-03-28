@@ -45,6 +45,13 @@ resource "azurerm_linux_virtual_machine" "machine" {
     }
   }
 
+  dynamic "custom_data" {
+    for_each = var.custom_data != null ? ["true"] : []
+    content {
+      custom_data = var.custom_data
+    }
+  }
+
   dynamic "plan" {
     for_each = var.plan != null ? ["plan"] : []
     content {
@@ -70,9 +77,10 @@ resource "azurerm_linux_virtual_machine" "machine" {
   }
 
   dynamic "identity" {
-    for_each = var.azure_ad_join != false ? ["identity"] : []
+    for_each = var.identity != null ? ["identity"] : []
     content {
-      type = "SystemAssigned"
+      type         = var.identity.type
+      identity_ids = var.identity.identity_ids
     }
   }
 
