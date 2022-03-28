@@ -168,6 +168,17 @@ variable "azure_ad_join" {
   default     = false
 }
 
+variable "azure_monitor_agent" {
+  description = "Whether to install the Azure Monitor Agent VM extension."
+  type        = bool
+  default     = false
+}
+
+variable "custom_data" {
+  description = "Base64-Encoded Custom Data which should be used for this Virtual Machine."
+  type        = string
+  default     = null
+
 variable "identity" {
   description = "Managed Identity which should be assigned the virtual machine."
   type = object({
@@ -175,4 +186,5 @@ variable "identity" {
     identity_ids = list(string)
   })
   default = null
+
 }
