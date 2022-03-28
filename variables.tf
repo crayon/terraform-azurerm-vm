@@ -178,6 +178,7 @@ variable "custom_data" {
   description = "Base64-Encoded Custom Data which should be used for this Virtual Machine."
   type        = string
   default     = null
+}
 
 variable "identity" {
   description = "Managed Identity which should be assigned the virtual machine."
