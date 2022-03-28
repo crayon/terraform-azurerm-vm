@@ -56,7 +56,6 @@ resource "azurerm_windows_virtual_machine" "machine" {
   availability_set_id = var.availability_set_id
   timezone            = var.timezone
 
-
   source_image_id = var.source_image_id.uri
 
   dynamic "source_image_reference" {
@@ -70,9 +69,10 @@ resource "azurerm_windows_virtual_machine" "machine" {
   }
 
   dynamic "identity" {
-    for_each = var.azure_ad_join != false ? ["identity"] : []
+    for_each = var.identity != null ? ["identity"] : []
     content {
-      type = "SystemAssigned"
+      type         = var.identity.type
+      identity_ids = var.identity.identity_ids
     }
   }
 
