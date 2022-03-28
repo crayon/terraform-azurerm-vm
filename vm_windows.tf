@@ -64,7 +64,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   dynamic "identity" {
     for_each = var.identity != null ? ["identity"] : []
     content {
-      type = var.identity.type
+      type         = var.identity.type
       identity_ids = var.identity.identity_ids
     }
   }
