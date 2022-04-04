@@ -45,12 +45,7 @@ resource "azurerm_linux_virtual_machine" "machine" {
     }
   }
 
-  dynamic "custom_data" {
-    for_each = var.custom_data != null ? ["true"] : []
-    content {
-      custom_data = var.custom_data
-    }
-  }
+  custom_data = var.custom_data
 
   dynamic "plan" {
     for_each = var.plan != null ? ["plan"] : []
