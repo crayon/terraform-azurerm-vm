@@ -98,7 +98,7 @@ variable "data_disks" {
 }
 variable "availability_zone" {
   description = "The availability zone the resources should be deployed to."
-  type        = number
+  type        = string
   default     = null
 }
 variable "availability_set_id" {
