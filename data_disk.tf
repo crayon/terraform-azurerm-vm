@@ -7,7 +7,7 @@ resource "azurerm_managed_disk" "data_disk" {
   storage_account_type      = each.value.storage_account_type
   create_option             = title(each.value.create_option)
   disk_size_gb              = each.value.disk_size_gb
-  zones                     = var.availability_zone
+  zones                     = [var.availability_zone]
   disk_encryption_set_id    = lookup(each.value.additional_settings, "disk_encryption_set_id", null)
 
   # If create_option is anything other than Empty,
