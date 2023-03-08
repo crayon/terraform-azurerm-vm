@@ -1,6 +1,7 @@
 resource "azurerm_linux_virtual_machine" "machine" {
   count                 = local.os_type != "windows" ? 1 : 0
   name                  = var.name
+  computer_name         = var.computer_name
   resource_group_name   = var.resource_group
   location              = var.location
   tags                  = var.tags

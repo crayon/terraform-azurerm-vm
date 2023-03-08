@@ -187,5 +187,10 @@ variable "identity" {
     identity_ids = list(string)
   })
   default = null
+}
 
+variable "computer_name" {
+  description = "Hostname to use for this Virtual Machine."
+  type        = string
+  default     = null
 }
