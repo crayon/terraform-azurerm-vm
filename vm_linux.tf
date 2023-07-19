@@ -8,6 +8,8 @@ resource "azurerm_linux_virtual_machine" "machine" {
   size                  = var.vm_size
   admin_username        = var.admin_user.username
   network_interface_ids = local.network_interface_ids
+  patch_assessment_mode = var.patch_mode
+  patch_mode            = var.patch_mode
 
   # If public_key is defined in var.admin_user, we add the ssh key.
   # Otherwise, we set admin_password.
