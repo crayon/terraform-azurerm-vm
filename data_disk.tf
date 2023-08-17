@@ -7,7 +7,7 @@ resource "azurerm_managed_disk" "data_disk" {
   storage_account_type = each.value.storage_account_type
   create_option        = title(each.value.create_option)
   disk_size_gb         = each.value.disk_size_gb
-  zones                 = [var.availability_zone]
+  zone                 = [var.availability_zone]
 
   # If create_option is anything other than Empty,
   # we need to define the supporting attribute.
