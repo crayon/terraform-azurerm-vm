@@ -126,7 +126,7 @@ variable "patch_mode" {
   type        = string
   default     = null
 }
-variable "bypass_platform_safety_checks" {
+variable "bypass_platform_safety_checks_on_user_schedule_enabled" {
   description = "Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false"
   type        = bool
   default     = false
