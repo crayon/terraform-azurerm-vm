@@ -10,6 +10,7 @@ resource "azurerm_linux_virtual_machine" "machine" {
   network_interface_ids = local.network_interface_ids
   patch_assessment_mode = var.patch_mode
   patch_mode            = var.patch_mode
+  provision_vm_agent    = "true"
 
   # If public_key is defined in var.admin_user, we add the ssh key.
   # Otherwise, we set admin_password.
