@@ -14,7 +14,7 @@ A module used for deploying virtual machines in Azure.
 ```hcl
 module "virtual_machine" {
   source  = "CMCS-Norway/vm/azurerm"
-  version = "1.13.5"
+  version = "1.13.10"
 
   name                  = "vm-example"
   resource_group        = azurerm_resource_group.example.name
