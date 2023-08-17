@@ -11,7 +11,8 @@ resource "azurerm_windows_virtual_machine" "machine" {
   admin_password        = var.admin_user.password
   network_interface_ids = local.network_interface_ids
   patch_mode            = var.patch_mode
-
+  patch_assessment_mode = var.patch_mode
+  bypass_platform_safety_checks_on_user_schedule_enabled = var.bypass_platform_safety_checks
   os_disk {
     caching                   = var.os_disk.caching
     storage_account_type      = var.os_disk.storage_account_type
