@@ -128,8 +128,8 @@ variable "patch_mode" {
 }
 variable "bypass_platform_safety_checks" {
   description = "Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false"
-  type        = string
-  default     = null
+  type        = bool
+  default     = fault
 }
 variable "backup" {
   description = "Settings for creating the backup resource."
