@@ -13,7 +13,7 @@ A module used for deploying virtual machines in Azure.
 
 ```hcl
 module "virtual_machine" {
-  source  = "crayon/vm/azurerm"
+  source  = "CMCS-Norway/vm/azurerm"
   version = "1.13.5"
 
   name                  = "vm-example"
