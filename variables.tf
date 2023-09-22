@@ -131,6 +131,12 @@ variable "bypass_platform_safety_checks_on_user_schedule_enabled" {
   type        = bool
   default     = false
 }
+variable "hotpatching_enabled" {
+  description = "Specifies if the VM should be patched without requiring a reboot."
+  type        = bool
+  default     = false
+
+}
 variable "backup" {
   description = "Settings for creating the backup resource."
   type = object({
