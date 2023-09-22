@@ -135,7 +135,11 @@ variable "hotpatching_enabled" {
   description = "Specifies if the VM should be patched without requiring a reboot."
   type        = bool
   default     = false
-
+}
+variable "provision_vm_agent" {
+  description = "Should the Azure VM Agent be provisioned on this Virtual Machine"
+  type        = bool
+  default     = false
 }
 variable "backup" {
   description = "Settings for creating the backup resource."
