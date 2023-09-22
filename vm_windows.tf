@@ -12,7 +12,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   network_interface_ids       = local.network_interface_ids
   patch_mode                  = var.patch_mode
   hotpatching_enabled         = var.hotpatching_enabled
-  provision_vm_agent          = var.hotpatching_enabled
+  provision_vm_agent          = var.provision_vm_agent
   allow_extension_operations  = var.provision_vm_agent
   patch_assessment_mode       = var.patch_mode
   bypass_platform_safety_checks_on_user_schedule_enabled = var.bypass_platform_safety_checks_on_user_schedule_enabled
