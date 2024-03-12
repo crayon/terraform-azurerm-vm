@@ -126,6 +126,21 @@ variable "patch_mode" {
   type        = string
   default     = null
 }
+variable "bypass_platform_safety_checks_on_user_schedule_enabled" {
+  description = "Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false"
+  type        = bool
+  default     = false
+}
+variable "hotpatching_enabled" {
+  description = "Specifies if the VM should be patched without requiring a reboot."
+  type        = bool
+  default     = false
+}
+variable "provision_vm_agent" {
+  description = "Should the Azure VM Agent be provisioned on this Virtual Machine"
+  type        = bool
+  default     = false
+}
 variable "backup" {
   description = "Settings for creating the backup resource."
   type = object({

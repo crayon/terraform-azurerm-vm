@@ -4,8 +4,8 @@ A module used for deploying virtual machines in Azure.
 ## Requirements
 | | |
 |----------|----------|
-|Terraform | >= 1.0.6 |
-| azurerm  | = 2.88.1 |
+|Terraform | >= 1.5.0 |
+| azurerm  | = 3.67.0 |
 
 ## Example deployment
 
@@ -13,8 +13,8 @@ A module used for deploying virtual machines in Azure.
 
 ```hcl
 module "virtual_machine" {
-  source  = "crayon/vm/azurerm"
-  version = "1.0.0"
+  source  = "CMCS-Norway/vm/azurerm"
+  version = "1.13.12"
 
   name                  = "vm-example"
   resource_group        = azurerm_resource_group.example.name
