@@ -5,7 +5,7 @@ A module used for deploying virtual machines in Azure.
 | | |
 |----------|----------|
 |Terraform | >= 1.4.4 |
-| azurerm  | = 3.49.0 |
+| azurerm  | = 3.89.0 |
 
 ## Example deployment
 
