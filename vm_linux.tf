@@ -7,6 +7,7 @@ resource "azurerm_linux_virtual_machine" "machine" {
   size                  = var.vm_size
   admin_username        = var.admin_user.username
   network_interface_ids = local.network_interface_ids
+  bypass_platform_safety_checks_on_user_schedule_enabled = var.bypass_platform_safety_checks_on_user_schedule_enabled
 
   # If public_key is defined in var.admin_user, we add the ssh key.
   # Otherwise, we set admin_password.
