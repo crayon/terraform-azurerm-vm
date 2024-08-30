@@ -194,3 +194,13 @@ variable "computer_name" {
   type        = string
   default     = null
 }
+
+variable "security_type" {
+  description = "Select security features enabled on the virtual machine."
+  type        = string
+  default     = null
+  validation {
+    condition     = var.security_type != null ? contains(["none", "secure_boot", "vtpm"], var.security_type) : true
+    error_message = "Value must be null, 'none', 'secure_boot' or 'vtpm'."
+  }
+}
