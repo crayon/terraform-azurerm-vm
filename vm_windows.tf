@@ -1,21 +1,24 @@
 resource "azurerm_windows_virtual_machine" "machine" {
-  count                       = local.os_type == "windows" ? 1 : 0
-  name                        = var.name
-  computer_name               = var.computer_name
-  resource_group_name         = var.resource_group
-  location                    = var.location
-  tags                        = var.tags
-  size                        = var.vm_size
-  license_type                = var.license_type
-  admin_username              = var.admin_user.username
-  admin_password              = var.admin_user.password
-  network_interface_ids       = local.network_interface_ids
-  patch_mode                  = var.patch_mode
-  hotpatching_enabled         = var.hotpatching_enabled
-  provision_vm_agent          = var.provision_vm_agent
-  allow_extension_operations  = var.provision_vm_agent
-  patch_assessment_mode       = var.patch_mode
+  count                                                  = local.os_type == "windows" ? 1 : 0
+  name                                                   = var.name
+  computer_name                                          = var.computer_name
+  resource_group_name                                    = var.resource_group
+  location                                               = var.location
+  tags                                                   = var.tags
+  size                                                   = var.vm_size
+  license_type                                           = var.license_type
+  admin_username                                         = var.admin_user.username
+  admin_password                                         = var.admin_user.password
+  network_interface_ids                                  = local.network_interface_ids
+  patch_mode                                             = var.patch_mode
+  hotpatching_enabled                                    = var.hotpatching_enabled
+  provision_vm_agent                                     = var.provision_vm_agent
+  allow_extension_operations                             = var.provision_vm_agent
+  patch_assessment_mode                                  = var.patch_mode
   bypass_platform_safety_checks_on_user_schedule_enabled = var.bypass_platform_safety_checks_on_user_schedule_enabled
+  secure_boot_enabled                                    = local.secure_boot_enabled
+  vtpm_enabled                                           = local.vtpm_enabled
+
   os_disk {
     caching                   = var.os_disk.caching
     storage_account_type      = var.os_disk.storage_account_type

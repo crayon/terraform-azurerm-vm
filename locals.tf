@@ -7,4 +7,7 @@ locals {
   image_id_os        = var.source_image_id.os == "windows" ? "windows" : "linux"
   image_reference_os = can(regex("(microsoft)", lower(var.source_image_reference.publisher))) ? "windows" : "linux"
   os_type            = var.source_image_id.os == null ? local.image_reference_os : local.image_id_os
+
+  secure_boot_enabled = var.security_type != null ? (var.security_type == "secure_boot" || var.security_type == "vtpm" ? true : false) : null # We make sure null gets passed in correctly
+  vtpm_enabled        = var.security_type != null ? (var.security_type == "vtpm" ? true : false) : null                                       # for backwards compatibility
 }
