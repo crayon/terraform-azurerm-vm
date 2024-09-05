@@ -19,9 +19,9 @@ variable "tags" {
 }
 ##### Machine
 variable "vm_size" {
-  description = "The size of virtual machine, defaults to Standard_D2s_v3."
+  description = "The size of virtual machine, defaults to Standard_D2s_v5."
   type        = string
-  default     = "Standard_D2s_v3"
+  default     = "Standard_D2s_v5"
 }
 variable "license_type" {
   description = "Specifies the type of Azure Hybrid Use Benefit which should be used for this Virtual Machine. Possible values are None, Windows_Client and Windows_Server."
@@ -69,7 +69,7 @@ variable "source_image_id" {
   }
 }
 variable "source_image_reference" {
-  description = "The source image reference block, as described in the documentation. Defaults to Ubuntu 18.04"
+  description = "The source image reference block, as described in the documentation. Defaults to Ubuntu 24.04"
   type = object({
     publisher = string
     offer     = string
@@ -77,9 +77,9 @@ variable "source_image_reference" {
     version   = string
   })
   default = {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+    publisher = "canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
 }
@@ -208,4 +208,14 @@ variable "computer_name" {
   description = "Hostname to use for this Virtual Machine."
   type        = string
   default     = null
+}
+
+variable "security_type" {
+  description = "Select security features enabled on the virtual machine."
+  type        = string
+  default     = null
+  validation {
+    condition     = var.security_type != null ? contains(["none", "secure_boot", "vtpm"], var.security_type) : true
+    error_message = "Value must be null, 'none', 'secure_boot' or 'vtpm'."
+  }
 }

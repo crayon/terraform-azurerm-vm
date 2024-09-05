@@ -1,10 +1,19 @@
 # Changelog
+
+## v1.13.17
+
+- Added support for Secure Boot and vTPM configuration
+- Bumped default server OS to Ubuntu 24.04 LTS
+- Bumped default VM SKU to v5
+
 ## v1.13.12
+
 - Bumped hashicorp/azurerm from 2.78.0 to 3.67.0
 - Bumped terraform from 1.0.5 to 1.5.5
 - Added some new functions
 
 # Old change logs from the forked repo! Crayon/terraform-azurerm-vm
+
 ## v1.11.0
 
 - (#34) *v1.11 changes* by @roberthstrand
