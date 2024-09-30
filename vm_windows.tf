@@ -18,6 +18,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   bypass_platform_safety_checks_on_user_schedule_enabled = var.bypass_platform_safety_checks_on_user_schedule_enabled
   secure_boot_enabled                                    = local.secure_boot_enabled
   vtpm_enabled                                           = local.vtpm_enabled
+  proximity_placement_group_id                           = var.proximity_placement_group_id
 
   os_disk {
     caching                   = var.os_disk.caching

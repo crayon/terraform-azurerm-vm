@@ -219,3 +219,9 @@ variable "security_type" {
     error_message = "Value must be null, 'none', 'secure_boot' or 'vtpm'."
   }
 }
+
+variable "proximity_placement_group_id" {
+  description = "(Optional) The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created"
+  type = string
+  default = null
+}
