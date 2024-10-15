@@ -14,6 +14,7 @@ resource "azurerm_linux_virtual_machine" "machine" {
   secure_boot_enabled   = local.secure_boot_enabled
   vtpm_enabled          = local.vtpm_enabled
   proximity_placement_group_id = var.proximity_placement_group_id
+  vm_agent_platform_updates_enabled = var.vm_agent_platform_updates_enabled
 
   # If public_key is defined in var.admin_user, we add the ssh key.
   # Otherwise, we set admin_password.
