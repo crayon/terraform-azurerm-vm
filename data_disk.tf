@@ -1,13 +1,14 @@
 resource "azurerm_managed_disk" "data_disk" {
   for_each = { for d in var.data_disks : d.name => d }
 
-  name                 = each.value.name
-  location             = var.location
-  resource_group_name  = var.resource_group
-  storage_account_type = each.value.storage_account_type
-  create_option        = title(each.value.create_option)
-  disk_size_gb         = each.value.disk_size_gb
-  zone                 = var.availability_zone
+  name                   = each.value.name
+  location               = var.location
+  resource_group_name    = var.resource_group
+  storage_account_type   = each.value.storage_account_type
+  create_option          = title(each.value.create_option)
+  disk_size_gb           = each.value.disk_size_gb
+  zone                   = var.availability_zone
+  disk_encryption_set_id = each.value.disk_encryption_set_id
 
   # If create_option is anything other than Empty,
   # we need to define the supporting attribute.
