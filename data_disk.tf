@@ -10,6 +10,11 @@ resource "azurerm_managed_disk" "data_disk" {
   zone                   = var.availability_zone
   disk_encryption_set_id = each.value.disk_encryption_set_id
 
+  # Disk Access Settings
+  disk_access_id                = each.value.disk_access_id
+  public_network_access_enabled = each.value.disk_access_id != null ? false : each.value.public_network_access_enabled
+  network_access_policy         = each.value.disk_access_id != null ? "AllowPrivate" : each.value.network_access_policy
+
   # If create_option is anything other than Empty,
   # we need to define the supporting attribute.
   source_resource_id = contains(["copy", "restore"], lower(each.value.create_option)) ? each.value.additional_settings.source_resource_id : null

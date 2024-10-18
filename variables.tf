@@ -86,14 +86,17 @@ variable "source_image_reference" {
 variable "data_disks" {
   description = "Any extra data disks, defined as a list of objects."
   type = list(object({
-    name                   = string
-    storage_account_type   = string
-    create_option          = string
-    caching                = string
-    lun                    = number
-    disk_size_gb           = number
-    disk_encryption_set_id = optional(string)
-    additional_settings    = map(string)
+    name                          = string
+    storage_account_type          = string
+    create_option                 = string
+    caching                       = string
+    lun                           = number
+    disk_size_gb                  = number
+    disk_encryption_set_id        = optional(string)
+    disk_access_id                = optional(string)
+    public_network_access_enabled = optional(bool, true)
+    network_access_policy         = optional(string)
+    additional_settings           = map(string)
   }))
   default = []
 }
@@ -122,11 +125,19 @@ variable "timezone" {
   type        = string
   default     = null
 }
+
 variable "patch_mode" {
-  description = "Specifies the mode of in-guest patching to this Windows Virtual Machine. Possible values are Manual, AutomaticByOS and AutomaticByPlatform. Defaults to AutomaticByOS."
+  description = "Specifies the mode of in-guest patching to this Windows Virtual Machine. Possible values are Manual, AutomaticByOS and AutomaticByPlatform. Defaults to AutomaticByOS"
   type        = string
-  default     = null
+  default     = "AutomaticByOS"
 }
+
+variable "patch_assessment_mode" {
+  description = "Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault"
+  type        = string
+  default     = "ImageDefault"
+}
+
 variable "bypass_platform_safety_checks_on_user_schedule_enabled" {
   description = "Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false"
   type        = bool
