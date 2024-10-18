@@ -86,13 +86,14 @@ variable "source_image_reference" {
 variable "data_disks" {
   description = "Any extra data disks, defined as a list of objects."
   type = list(object({
-    name                 = string
-    storage_account_type = string
-    create_option        = string
-    caching              = string
-    lun                  = number
-    disk_size_gb         = number
-    additional_settings  = map(string)
+    name                   = string
+    storage_account_type   = string
+    create_option          = string
+    caching                = string
+    lun                    = number
+    disk_size_gb           = number
+    disk_encryption_set_id = optional(string)
+    additional_settings    = map(string)
   }))
   default = []
 }
@@ -222,12 +223,12 @@ variable "security_type" {
 
 variable "proximity_placement_group_id" {
   description = "(Optional) The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "vm_agent_platform_updates_enabled" {
   description = "Should vm agent platform updates be enabled"
-  type = bool
-  default = null
+  type        = bool
+  default     = null
 }
