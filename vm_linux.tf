@@ -1,19 +1,19 @@
 resource "azurerm_linux_virtual_machine" "machine" {
-  count                 = local.os_type != "windows" ? 1 : 0
-  name                  = var.name
-  computer_name         = var.computer_name
-  resource_group_name   = var.resource_group
-  location              = var.location
-  tags                  = var.tags
-  size                  = var.vm_size
-  admin_username        = var.admin_user.username
-  network_interface_ids = local.network_interface_ids
-  patch_assessment_mode = var.patch_mode
-  patch_mode            = var.patch_mode
-  provision_vm_agent    = "true"
-  secure_boot_enabled   = local.secure_boot_enabled
-  vtpm_enabled          = local.vtpm_enabled
-  proximity_placement_group_id = var.proximity_placement_group_id
+  count                             = local.os_type != "windows" ? 1 : 0
+  name                              = var.name
+  computer_name                     = var.computer_name
+  resource_group_name               = var.resource_group
+  location                          = var.location
+  tags                              = var.tags
+  size                              = var.vm_size
+  admin_username                    = var.admin_user.username
+  network_interface_ids             = local.network_interface_ids
+  patch_mode                        = var.patch_mode
+  patch_assessment_mode             = var.patch_assessment_mode
+  provision_vm_agent                = "true"
+  secure_boot_enabled               = local.secure_boot_enabled
+  vtpm_enabled                      = local.vtpm_enabled
+  proximity_placement_group_id      = var.proximity_placement_group_id
   vm_agent_platform_updates_enabled = var.vm_agent_platform_updates_enabled
 
   # If public_key is defined in var.admin_user, we add the ssh key.

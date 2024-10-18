@@ -11,10 +11,10 @@ resource "azurerm_windows_virtual_machine" "machine" {
   admin_password                                         = var.admin_user.password
   network_interface_ids                                  = local.network_interface_ids
   patch_mode                                             = var.patch_mode
+  patch_assessment_mode                                  = var.patch_assessment_mode
   hotpatching_enabled                                    = var.hotpatching_enabled
   provision_vm_agent                                     = var.provision_vm_agent
   allow_extension_operations                             = var.provision_vm_agent
-  patch_assessment_mode                                  = var.patch_mode
   bypass_platform_safety_checks_on_user_schedule_enabled = var.bypass_platform_safety_checks_on_user_schedule_enabled
   secure_boot_enabled                                    = local.secure_boot_enabled
   vtpm_enabled                                           = local.vtpm_enabled
