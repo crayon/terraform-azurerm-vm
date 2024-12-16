@@ -243,3 +243,9 @@ variable "vm_agent_platform_updates_enabled" {
   type        = bool
   default     = null
 }
+
+variable "accelerated_networking_enabled" {
+  description = "Should the network interface have accelerated networking enabled"
+  type        = bool
+  default     = false
+}

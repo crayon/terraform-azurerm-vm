@@ -1,11 +1,11 @@
 resource "azurerm_network_interface" "machine" {
   for_each = { for nis in var.network_interface_subnets : nis.name => nis }
 
-  name                = format("nic-%s-%s", var.name, each.value.name)
-  resource_group_name = var.resource_group
-  location            = var.location
-  tags                = var.tags
-
+  name                           = format("nic-%s-%s", var.name, each.value.name)
+  resource_group_name            = var.resource_group
+  location                       = var.location
+  tags                           = var.tags
+  accelerated_networking_enabled = var.accelerated_networking_enabled
   ip_configuration {
     name                 = each.value.name
     subnet_id            = data.azurerm_subnet.interfaces[each.value.name].id
