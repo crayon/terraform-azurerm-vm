@@ -213,7 +213,10 @@ variable "identity" {
     type         = string
     identity_ids = list(string)
   })
-  default = "SystemAssigned"
+  default = {
+    type         = "SystemAssigned"
+    identity_ids = []
+  }
 }
 
 variable "computer_name" {
