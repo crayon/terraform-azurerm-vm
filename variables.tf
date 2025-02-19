@@ -123,25 +123,25 @@ variable "boot_diagnostic_storage_account" {
 variable "timezone" {
   description = "Set a specific timezone, used for Windows machines only."
   type        = string
-  default     = null
+  default     = "Central Europe Standard Time"
 }
 
 variable "patch_mode" {
-  description = "Specifies the mode of in-guest patching to this Windows Virtual Machine. Possible values are Manual, AutomaticByOS and AutomaticByPlatform. Defaults to AutomaticByOS"
+  description = "Specifies the mode of in-guest patching to this Windows Virtual Machine. Possible values are Manual, AutomaticByOS and AutomaticByPlatform. Defaults to AutomaticByPlatform"
   type        = string
-  default     = "AutomaticByOS"
+  default     = "AutomaticByPlatform"
 }
 
 variable "patch_assessment_mode" {
-  description = "Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault"
+  description = "Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to AutomaticByPlatform"
   type        = string
-  default     = "ImageDefault"
+  default     = "AutomaticByPlatform"
 }
 
 variable "bypass_platform_safety_checks_on_user_schedule_enabled" {
   description = "Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false"
   type        = bool
-  default     = false
+  default     = true
 }
 variable "hotpatching_enabled" {
   description = "Specifies if the VM should be patched without requiring a reboot."
@@ -149,9 +149,9 @@ variable "hotpatching_enabled" {
   default     = false
 }
 variable "provision_vm_agent" {
-  description = "Should the Azure VM Agent be provisioned on this Virtual Machine"
+  description = "Should the Azure VM Agent be provisioned on this Virtual Machine, defaults to true"
   type        = bool
-  default     = false
+  default     = true
 }
 variable "backup" {
   description = "Settings for creating the backup resource."
@@ -213,7 +213,7 @@ variable "identity" {
     type         = string
     identity_ids = list(string)
   })
-  default = null
+  default = "SystemAssigned"
 }
 
 variable "computer_name" {
@@ -225,7 +225,7 @@ variable "computer_name" {
 variable "security_type" {
   description = "Select security features enabled on the virtual machine."
   type        = string
-  default     = null
+  default     = "vtpm"
   validation {
     condition     = var.security_type != null ? contains(["none", "secure_boot", "vtpm"], var.security_type) : true
     error_message = "Value must be null, 'none', 'secure_boot' or 'vtpm'."
@@ -241,11 +241,17 @@ variable "proximity_placement_group_id" {
 variable "vm_agent_platform_updates_enabled" {
   description = "Should vm agent platform updates be enabled"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "accelerated_networking_enabled" {
   description = "Should the network interface have accelerated networking enabled"
   type        = bool
-  default     = false
+  default     = true
+}
+
+variable "encryption_at_host_enabled" {
+  description = "Should the virtual machine be encrypted at host"
+  type        = bool
+  default     = true
 }

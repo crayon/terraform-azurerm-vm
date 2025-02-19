@@ -20,6 +20,7 @@ resource "azurerm_windows_virtual_machine" "machine" {
   vtpm_enabled                                           = local.vtpm_enabled
   proximity_placement_group_id                           = var.proximity_placement_group_id
   vm_agent_platform_updates_enabled                      = var.vm_agent_platform_updates_enabled
+  encryption_at_host_enabled                             = var.encryption_at_host_enabled
   os_disk {
     caching                   = var.os_disk.caching
     storage_account_type      = var.os_disk.storage_account_type
