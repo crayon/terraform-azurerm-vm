@@ -194,3 +194,9 @@ variable "computer_name" {
   type        = string
   default     = null
 }
+
+variable "bypass_platform_safety_checks_on_user_schedule_enabled" {
+  description = "Used for update management"
+  type        = bool
+  default     = true
+}
