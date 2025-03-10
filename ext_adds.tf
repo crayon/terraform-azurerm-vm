@@ -21,4 +21,5 @@ SETTINGS
     }
   PROTECTED_SETTINGS
 
+  tags = var.tags
 }
